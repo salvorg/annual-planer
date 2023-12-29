@@ -17,7 +17,7 @@ function App() {
 
     const fetchData = async () => {
       try {
-          const response = await axiosApi.get('/');
+          const response = await axiosApi.get('/month.json');
           const newState = Object.entries(response.data).map(([key, value]) => ({
               id: key,
               ...value,
