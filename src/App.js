@@ -1,6 +1,6 @@
 import './App.css';
 import {useEffect, useState} from "react";
-import axiosApi from "../axios-api";
+import axiosApi from "./axios-api";
 
 function App() {
     const [state, setState] = useState([]);
