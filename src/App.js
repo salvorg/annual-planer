@@ -1,9 +1,19 @@
 import './App.css';
 import {useEffect, useState} from "react";
 import axiosApi from "./axios-api";
+import AddMonthModal from "./components/AddMonthModal";
 
 function App() {
     const [state, setState] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
 
     const fetchData = async () => {
       try {
@@ -29,7 +39,7 @@ function App() {
                 Annual planer app
             </div>
             <div className="action-panel">
-                <button>Add new month</button>
+                <button onClick={openModal}>Add new month</button>
                 <button>Add new plan</button>
             </div>
             <div className="main-block">
@@ -37,6 +47,7 @@ function App() {
                     <div className="month" key={item.id}>{item.id}</div>
                 ))}
             </div>
+            <AddMonthModal isOpen={modalIsOpen} onClose={closeModal} />
         </div>
     );
 }
