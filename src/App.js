@@ -16,17 +16,17 @@ function App() {
     };
 
     const fetchData = async () => {
-      try {
-          const response = await axiosApi.get('/month.json');
-          const newState = Object.entries(response.data).map(([key, value]) => ({
-              id: key,
-              ...value,
-          }));
-          setState(newState);
-          console.log(newState);
-      } catch (e) {
-          console.error('Error fetching data: ', e);
-      }
+        try {
+            const response = await axiosApi.get('/month.json');
+            const newState = Object.entries(response.data).map(([key, value]) => ({
+                id: key,
+                ...value,
+            }));
+            setState(newState);
+            console.log(newState);
+        } catch (e) {
+            console.error('Error fetching data: ', e);
+        }
     };
 
     useEffect(() => {
@@ -43,11 +43,13 @@ function App() {
                 <button>Add new plan</button>
             </div>
             <div className="main-block">
-                {state.map((item) => (
+                {state
+                    .sort((a, b) => a.number - b.number)
+                    .map((item) => (
                     <div className="month" key={item.id}>{item.id}</div>
                 ))}
             </div>
-            <AddMonthModal isOpen={modalIsOpen} onClose={closeModal} />
+            <AddMonthModal isOpen={modalIsOpen} onClose={closeModal} fetchData={fetchData} />
         </div>
     );
 }
