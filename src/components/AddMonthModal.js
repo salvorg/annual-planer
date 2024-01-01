@@ -19,11 +19,13 @@ const AddMonthModal = ({isOpen, onClose, fetchData}) => {
         {name: 'November', number: '11'},
         {name: 'December', number: '12'},
     ];
+    const years = ['2024', '2025'];
     // let disabled = false;
 
     const inputHandler = (event) => {
         const {name, value} = event.target;
-        setState(prevState => ({ ...prevState, [name]: value }));
+
+        setState((prevState) => ({ ...prevState, [name]: value }));
     };
 
     const onSubmit = async (event) => {
@@ -52,14 +54,26 @@ const AddMonthModal = ({isOpen, onClose, fetchData}) => {
                     {/*<input onChange={inputHandler} placeholder="month name" name="name" value={state.name}/>*/}
                     <MySelect
                         options={months}
-                        defaultValue="choose month"
+                        defaultValue="month"
                         value={state.name}
-                        onChange={inputHandler}
+                        onChange={(event) => {
+                            inputHandler(event);
+                            const selectedMonth = months.find(month => month.name === event.target.value);
+                            setState(prevState => ({ ...prevState, number: selectedMonth?.number }));
+                        }}
                         name="name"
                     />
-                    <input onChange={inputHandler} placeholder="month number" name="number" value={state.number}/>
-                    <input onChange={inputHandler} placeholder="year" name="year" value={state.year}/>
+                    {/*<input onChange={inputHandler} placeholder="month number" name="number" value={state.number}/>*/}
+                    {/*<input onChange={inputHandler} placeholder="year" name="year" value={state.year}/>*/}
+                    <MySelect
+                        options={years}
+                        defaultValue="year"
+                        value={state.year}
+                        onChange={inputHandler}
+                        name="year"
+                    />
                     <button onClick={onSubmit} disabled={disabled}>Create</button>
+                    {/*<button type={"button"} onClick={() => console.log(state)}>Log</button>*/}
                 </form>
             </div>
         </div>
