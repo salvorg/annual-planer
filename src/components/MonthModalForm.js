@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import axiosApi from "../axios-api";
-import styles from './AddMonthModal.module.css';
+import styles from './MonthModalForm.module.css';
 import MySelect from "./UI/select/MySelect";
 
-const AddMonthModal = ({isOpen, onClose, fetchData}) => {
+const MonthModalForm = ({isOpen, onClose, fetchData}) => {
     const [state, setState] = useState({name: '', number: '', year: ''});
     const months = [
         {name: 'January', number: '1'},
@@ -56,12 +56,12 @@ const AddMonthModal = ({isOpen, onClose, fetchData}) => {
                         options={months}
                         defaultValue="month"
                         value={state.name}
+                        name="name"
                         onChange={(event) => {
                             inputHandler(event);
                             const selectedMonth = months.find(month => month.name === event.target.value);
                             setState(prevState => ({ ...prevState, number: selectedMonth?.number }));
                         }}
-                        name="name"
                     />
                     {/*<input onChange={inputHandler} placeholder="month number" name="number" value={state.number}/>*/}
                     {/*<input onChange={inputHandler} placeholder="year" name="year" value={state.year}/>*/}
@@ -69,8 +69,8 @@ const AddMonthModal = ({isOpen, onClose, fetchData}) => {
                         options={years}
                         defaultValue="year"
                         value={state.year}
-                        onChange={inputHandler}
                         name="year"
+                        onChange={inputHandler}
                     />
                     <button onClick={onSubmit} disabled={disabled}>Create</button>
                     {/*<button type={"button"} onClick={() => console.log(state)}>Log</button>*/}
@@ -80,4 +80,4 @@ const AddMonthModal = ({isOpen, onClose, fetchData}) => {
     );
 };
 
-export default AddMonthModal;
+export default MonthModalForm;
