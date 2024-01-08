@@ -41,9 +41,9 @@
 
 .monthModalForm button {
     flex: 1 0 40px;
-    background: blueviolet;
+    background-color: #ebecf0;
     font-size: 18px;
-    color: white;
+    color: #5a5b62;
     padding: 10px 25px;
     border: 1px solid #e1d9ec;
     border-bottom-width: 2px;
@@ -52,6 +52,6 @@
 }
 
 .monthModalForm button:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
