@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import MonthModalForm from "./MonthModalForm";
-import PlanModalForm from "./PlanModalForm";
+import MonthModalForm from "../components/MonthModalForm";
+import PlanModalForm from "../components/PlanModalForm";
 import axiosApi from "../axios-api";
 
 const Home = () => {
