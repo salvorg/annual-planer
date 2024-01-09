@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import MonthModalForm from "../components/MonthModalForm";
 import PlanModalForm from "../components/PlanModalForm";
 import axiosApi from "../axios-api";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
     const [state, setState] = useState([]);
     const [modalFirstOpen, setModalFirstOpen] = useState(false);
     const [modalSecondOpen, setModalSecondOpen] = useState(false);
+    const navigate = useNavigate();
 
     const openFirstModal = () => {
         setModalFirstOpen(true);
@@ -24,8 +26,8 @@ const Home = () => {
         setModalSecondOpen(false);
     };
 
-    const goToMonthInfo = () => {
-
+    const goToMonthInfo = (id) => {
+        navigate(`/plans/${id}`);
     };
 
     const fetchData = async () => {
@@ -59,7 +61,7 @@ const Home = () => {
                         <div
                             className="month pointer"
                             key={item.id}
-                            onClick={goToMonthInfo}
+                            onClick={() => goToMonthInfo(item.number)}
                         >
                             {item.id}
                         </div>
