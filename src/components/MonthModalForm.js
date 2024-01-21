@@ -63,8 +63,6 @@ const MonthModalForm = ({isOpen, onClose, fetchData}) => {
                             setState(prevState => ({ ...prevState, number: selectedMonth?.number }));
                         }}
                     />
-                    {/*<input onChange={inputHandler} placeholder="month number" name="number" value={state.number}/>*/}
-                    {/*<input onChange={inputHandler} placeholder="year" name="year" value={state.year}/>*/}
                     <MySelect
                         options={years}
                         defaultValue="year"
