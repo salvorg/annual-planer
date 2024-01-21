@@ -17,7 +17,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/plans/:id"
+                    path="/:year/:monthName"
                     element={
                         <Month/>
                     }
